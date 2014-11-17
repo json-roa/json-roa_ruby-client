@@ -5,11 +5,11 @@ require 'json_roa/client/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "json_roa-client"
-  spec.version       = JsonRoa::Client::VERSION
+  spec.version       = JSON_ROA::Client::VERSION
   spec.authors       = ["Thomas Schank"]
   spec.email         = ["DrTom@schank.ch"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = "The Ruby JSON-ROA Client Reference Implementation"
+  spec.description   = ""
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,11 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "pry", "~> 0.10"
+
+  spec.add_dependency 'addressable', '~> 2'
+  spec.add_dependency 'faraday', '~> 0.9'
+  spec.add_dependency 'faraday_middleware', '~> 0.9'
+  # spec.add_dependency "pry", "~> 0.10"
+
 end
