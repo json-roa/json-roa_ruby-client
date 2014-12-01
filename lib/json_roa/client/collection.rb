@@ -10,16 +10,23 @@ module JSON_ROA
       end
 
       def each &block
-        relations= @resource.response.env \
-          .json_roa_data['collection']['relations'] rescue []
-        relations.each do |key, data|
-          yield Relation.new(@conn,key,data) if block_given? 
-        end
 
-        next_val= @resource.response \
-          .env.json_roa_data['collection']['next'] rescue nil
-        if next_val 
-          Relation.new(@conn,"next",next_val).get().collection.each(&block)
+        while true do 
+
+          relations= @resource.json_roa_data['collection']['relations'] rescue []
+
+          relations.each do |key, data|
+            yield Relation.new(@conn,key,data) if block_given? 
+          end
+
+          next_val= @resource.json_roa_data['collection']['next'] rescue nil
+
+          if relations.empty? or (not next_val)
+            break 
+          else
+            @resource= Relation.new(@conn,"next",next_val).get()
+          end
+
         end
 
       end

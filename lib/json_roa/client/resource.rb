@@ -18,10 +18,6 @@ module JSON_ROA
         ::JSON_ROA::Client::Relation.new @conn, key, relhash
       end
 
-      def relations_data
-        @response.env.json_roa_data['relations']
-      end
-
       def data
         @response.body
       end

@@ -1,8 +1,5 @@
 require "json_roa/client/version"
-
 require "json_roa/client/resource"
-
-
 require 'faraday'
 require 'faraday_middleware'
 
@@ -29,14 +26,14 @@ module JSON_ROA
                               headers: {accept: "application/json-roa+json"}) do |conn|
           conn.use ::JSON_ROA::Middleware
           conn.response :json, :content_type => /\bjson$/
-          conn.use Faraday::Response::RaiseError
           conn.request :retry
+          conn.use Faraday::Response::RaiseError
           conn.adapter Faraday.default_adapter  
         end
 
         yield @conn if block_given?
 
-        Resource.new @conn
+        Relation.new @conn, "root", {"href" => url}
 
       end
 
