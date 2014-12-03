@@ -9,7 +9,7 @@ A ruby client for `JSON_ROA`.
 ```ruby
 require 'json_roa/client'
 
-@root_resource = JSON_ROA::Client.connect @base_url do |conn|
+@root_relation= JSON_ROA::Client.connect @base_url do |conn|
   conn.basic_auth(@username,@password)
 end
 ```
@@ -18,6 +18,12 @@ end
 
 
 ###  Resources 
+
+#### Retrieving the Resource of the Root Relation
+
+```ruby
+@root_resource= @root_relation.get()
+```
 
 #### Data
 
