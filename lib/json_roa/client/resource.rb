@@ -14,8 +14,13 @@ module JSON_ROA
       end
 
       def relation key
-        relhash= @response.env.json_roa_data['relations'][key]
+        relhash= json_roa_data['relations'][key]
         ::JSON_ROA::Client::Relation.new @conn, key, relhash
+      end
+
+      def self_relation
+        ::JSON_ROA::Client::Relation.new( \
+          @conn, "self", json_roa_data['self_relation']) rescue nil
       end
 
       def data

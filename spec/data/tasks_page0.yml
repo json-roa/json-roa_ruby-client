@@ -1,0 +1,11 @@
+tasks:
+  - id: "t1"
+_json-roa:
+  relations:
+    root: /
+  collection:
+    next: 
+      href: /tasks/?page=1
+    relations:
+      0: 
+        href: /tasks/t1
