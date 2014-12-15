@@ -7,7 +7,7 @@ describe "methods of the relation /tasks/t1" do
   end
 
   subject(:task1_self_relation) \
-    {root_relation.get().relation("task").get(id: "t1").self_relation}
+    {root_relation.get().relation("task").get("id" => "t1").self_relation}
 
   it "is a relation" do 
     expect(task1_self_relation.class).to be== JSON_ROA::Client::Relation

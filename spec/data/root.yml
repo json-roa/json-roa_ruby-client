@@ -3,7 +3,7 @@ _json-roa:
   version: 0.0.0
   relations: 
     tasks:
-      href: /tasks/
+      href: /tasks/{?x,y}
     task: 
       href: /tasks/{id}
       methods:

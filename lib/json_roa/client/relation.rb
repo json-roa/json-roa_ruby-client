@@ -26,9 +26,18 @@ module JSON_ROA
         end
       end
 
+      def assert_proper_query_parameters! query_parameters, template
+        unless Set.new(query_parameters.keys).subset? Set.new(template.keys)
+          raise StandardError, ["query_parameters", query_parameters.keys.to_s,
+                                "do not match template parameters",
+                                template.keys.to_s].join(" ") 
+        end
+      end
+
       def run_request method, query_parameters, body, headers, &block
         href= @data['href']
         template= ::Addressable::Template.new(href) 
+        assert_proper_query_parameters! query_parameters, template
         expanded_url= template.expand(query_parameters)
         response=@conn.run_request( \
           method.to_sym, expanded_url, body, headers, &block)
