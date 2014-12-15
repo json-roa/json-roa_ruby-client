@@ -1,6 +1,35 @@
 # Ruby JSON-ROA Client
 
-A ruby client for `JSON_ROA`.
+A ruby client for `JSON-ROA`.
+
+## Semantic Versioning and Rubygems Versioning
+
+This library is _BETA_ because the [JSON-ROA specifciation][] itself is
+_BETA_. This library uses [Semantic Versioning][] and the current version
+is [1.0.0-beta.2](./lib/json_roa/client/version.rb).
+
+The rubygems system [claims also to use semantic versioning][] and even *urges
+gem developers to follow it*. Rubygems transforms the version as given above
+into `1.0.0.pre.beta.1`. Any work using this library should specify the
+following in the Gemfile 
+
+    gem 'json_roa-client', '= 1.0.0.pre.beta.2' 
+
+or the following in the gemspec 
+
+    spec.add_runtime_dependency 'json_roa-client', '= 1.0.0.pre.beta.2'
+
+In the latter case, building the gem will result in a warning because of the
+prerelease. You can safely ignore this warning. It is in the context of
+semantic versioning misleading. However, it is important to fix the dependency
+by using the `=` sign. In this case, violation would warrant a warning. 
+
+
+
+
+  [JSON-ROA specifciation]: http://json-roa.github.io/specification.html
+  [Semantic Versioning]: http://semver.org/
+  [claims also to use semantic versioning]: http://guides.rubygems.org/patterns/#semantic-versioning
 
 ## Usage
 
