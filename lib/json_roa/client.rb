@@ -1,5 +1,5 @@
-require "json_roa/client/version"
-require "json_roa/client/resource"
+require 'json_roa/client/version'
+require 'json_roa/client/resource'
 require 'faraday'
 require 'faraday_middleware'
 
@@ -11,33 +11,32 @@ module JSON_ROA
         env.class.class_eval do |klass|
           attr_accessor :json_roa_data
         end
-        env.json_roa_data= env.body.delete("_json-roa")
+        env.json_roa_data = env.body.delete('_json-roa')
       end
     end
   end
 
   module Client
 
-    class << self 
+    class << self
 
-      def connect url, &block 
-
-        @conn= Faraday.new(url: url,
-                              headers: {accept: "application/json-roa+json"}) do |conn|
-          conn.use ::JSON_ROA::Middleware
-          conn.response :json, :content_type => /\bjson$/
-          conn.request :retry
-          conn.use Faraday::Response::RaiseError
-          conn.adapter Faraday.default_adapter  
-        end
+      def connect(url, &_block)
+        @conn = Faraday.new(
+          url: url,
+          headers: { accept: 'application/json-roa+json' }) do |conn|
+            conn.use ::JSON_ROA::Middleware
+            conn.response :json, content_type: /\bjson$/
+            conn.request :retry
+            conn.use Faraday::Response::RaiseError
+            conn.adapter Faraday.default_adapter
+          end
 
         yield @conn if block_given?
-
-        Relation.new @conn, "root", {"href" => url}
-
+        Relation.new @conn, 'root', 'href' => url
       end
 
     end
+
   end
 
 end

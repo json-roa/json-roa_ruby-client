@@ -1,5 +1,5 @@
-require "json_roa/client/relation"
-require "json_roa/client/collection"
+require 'json_roa/client/relation'
+require 'json_roa/client/collection'
 
 module JSON_ROA
   module Client
@@ -8,19 +8,19 @@ module JSON_ROA
 
       attr_reader :response
 
-      def initialize conn, response = nil
-        @conn= conn
-        @response= response || conn.get
+      def initialize(conn, response = nil)
+        @conn = conn
+        @response = response || conn.get
       end
 
-      def relation key
-        relhash= json_roa_data['relations'][key]
+      def relation(key)
+        relhash = json_roa_data['relations'][key]
         ::JSON_ROA::Client::Relation.new @conn, key, relhash
       end
 
       def self_relation
         ::JSON_ROA::Client::Relation.new( \
-          @conn, "self", json_roa_data['self_relation']) rescue nil
+          @conn, 'self', json_roa_data['self_relation']) rescue nil
       end
 
       def data
@@ -32,7 +32,7 @@ module JSON_ROA
       end
 
       def collection
-        ::JSON_ROA::Client::Collection.new @conn, self 
+        ::JSON_ROA::Client::Collection.new @conn, self
       end
 
       def to_s
@@ -43,4 +43,3 @@ module JSON_ROA
 
   end
 end
-
