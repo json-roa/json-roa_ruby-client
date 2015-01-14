@@ -34,6 +34,11 @@ module JSON_ROA
       def collection
         ::JSON_ROA::Client::Collection.new @conn, self 
       end
+
+      def to_s
+        "#{self.class.name}: #{data} #{json_roa_data}"
+      end
+
     end
 
   end

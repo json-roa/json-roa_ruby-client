@@ -52,6 +52,10 @@ module JSON_ROA
         available_methods_data.keys.map(&:to_sym)
       end
 
+      def to_s 
+        "#{self.class.name}:  #{@data}"
+      end
+
     end
 
   end

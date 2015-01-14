@@ -13,13 +13,13 @@ module JSON_ROA
 
         while true do 
 
-          relations= @resource.json_roa_data['collection']['relations'] rescue []
+          relations= collection_data['relations'] rescue []
 
           relations.each do |key, data|
             yield Relation.new(@conn,key,data) if block_given? 
           end
 
-          next_val= @resource.json_roa_data['collection']['next'] rescue nil
+          next_val= collection_data['next'] rescue nil
 
           if relations.empty? or (not next_val)
             break 
@@ -30,6 +30,15 @@ module JSON_ROA
         end
 
       end
+
+      def collection_data
+        @resource.json_roa_data['collection']
+      end
+
+      def to_s 
+        "#{self.class.name}: #{collection_data}"
+      end
+
     end
 
   end
