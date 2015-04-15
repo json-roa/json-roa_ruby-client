@@ -1,6 +1,6 @@
 x: 42
 _json-roa: 
-  version: 0.0.0
+  version: 1.0.0
   relations: 
     tasks:
       href: /tasks/{?x,y}
@@ -10,3 +10,5 @@ _json-roa:
         get: {}
         put: {}
         delete: {}
+    some_array:
+      href: /array

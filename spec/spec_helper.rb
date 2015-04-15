@@ -27,24 +27,29 @@ module JSON_ROA
   end
 end
 
+def load_yaml_file(filepath)
+  YAML.load_file(
+    File.expand_path(filepath, File.dirname(__FILE__)))
+end
+
 def root_data
-  YAML.load_file(File.expand_path('./data/root.yml',
-                                  File.dirname(__FILE__)))
+  load_yaml_file './data/root.yml'
 end
 
 def tasks_page0_data
-  YAML.load_file(File.expand_path('./data/tasks_page0.yml',
-                                  File.dirname(__FILE__)))
+  load_yaml_file './data/tasks_page0.yml'
 end
 
 def tasks_page1_data
-  YAML.load_file(File.expand_path('./data/tasks_page1.yml',
-                                  File.dirname(__FILE__)))
+  load_yaml_file './data/tasks_page1.yml'
 end
 
 def task1_data
-  YAML.load_file(File.expand_path('./data/task1.yml',
-                                  File.dirname(__FILE__)))
+  load_yaml_file './data/task1.yml'
+end
+
+def array_data
+  load_yaml_file './data/array.yml'
 end
 
 def test_api
@@ -67,6 +72,9 @@ def test_api
       end
       stub.get('/tasks/t1') do |env|
         [200, headers, task1_data.to_json]
+      end
+      stub.get('/array') do |env|
+        [200, headers, array_data.to_json]
       end
     end
   end

@@ -11,7 +11,12 @@ module JSON_ROA
         env.class.class_eval do |klass|
           attr_accessor :json_roa_data
         end
-        env.json_roa_data = env.body.delete('_json-roa')
+        if env.body.is_a? Array
+          env.json_roa_data = env.body.first
+          env.body.delete_at 0
+        elsif env.body.is_a? Hash
+          env.json_roa_data = env.body.delete('_json-roa')
+        end
       end
     end
   end
