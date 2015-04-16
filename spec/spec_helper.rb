@@ -76,6 +76,15 @@ def test_api
       stub.get('/array') do |env|
         [200, headers, array_data.to_json]
       end
+      stub.get('/missing-version') do |env|
+        [200, headers, { '_json-roa' => {} }]
+      end
+      stub.get('/malformed-version') do |env|
+        [200, headers, { '_json-roa' => { 'json-roa_version' => 'X1.0.0' } }]
+      end
+      stub.get('/incompatible-version') do |env|
+        [200, headers, { '_json-roa' => { 'json-roa_version' => '5.0.0' } }]
+      end
     end
   end
 end

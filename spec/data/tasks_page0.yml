@@ -1,6 +1,7 @@
 tasks:
   - id: "t1"
 _json-roa:
+  json-roa_version: 1.0.0
   relations:
     root: /
   collection:

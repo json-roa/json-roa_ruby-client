@@ -1,6 +1,6 @@
 state: 'done'
 _json-roa: 
-  version: 1.0.0
+  json-roa_version: 1.0.0
   self_relation: 
     href: /tasks/t1
     methods:

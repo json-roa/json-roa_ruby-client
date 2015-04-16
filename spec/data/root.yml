@@ -1,6 +1,6 @@
 x: 42
 _json-roa: 
-  version: 1.0.0
+  json-roa_version: 1.0.0
   relations: 
     tasks:
       href: /tasks/{?x,y}
