@@ -1,6 +1,6 @@
 require_relative 'spec_helper.rb'
 
-describe 'API: traversing from root to resource to some relation'  do
+describe 'API: traversing from root to resource to some relation' do
 
   describe 'root relation' do
 
@@ -8,7 +8,7 @@ describe 'API: traversing from root to resource to some relation'  do
       JSON_ROA::Client.connect('/')
     end
 
-    describe 'root_resource via get'  do
+    describe 'root_resource via get' do
 
       subject(:root_resource) { root_relation.get }
 

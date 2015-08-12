@@ -21,7 +21,8 @@ module JSON_ROA
           env.json_roa_data = env.body.delete('_json-roa')
         end
         json_roa_version = env.json_roa_data['json-roa_version']
-        major_version =           begin
+        major_version =
+          begin
             Integer(/^(\d+).*/.match(json_roa_version)[1])
           rescue StandardError
             raise VersionError,
@@ -37,17 +38,30 @@ module JSON_ROA
 
   module Client
 
+    DEFAULT_OPTIONS = {
+      adapter: Faraday.default_adapter,
+      raise_error: true,
+      retry: true
+    }
+
     class << self
 
-      def connect(url, &_block)
+      def connect(url, options = {}, &_block)
+        options = options.merge(DEFAULT_OPTIONS)
         @conn = Faraday.new(
           url: url,
           headers: { accept: 'application/json-roa+json' }) do |conn|
             conn.use ::JSON_ROA::Middleware
             conn.response :json, content_type: /\bjson$/
-            conn.request :retry
-            conn.use Faraday::Response::RaiseError
-            conn.adapter Faraday.default_adapter
+            if options[:retry]
+              conn.request :retry
+            end
+            if options[:raise_error]
+              conn.use Faraday::Response::RaiseError
+            end
+            if options[:adapter]
+              conn.adapter options[:adapter]
+            end
           end
 
         yield @conn if block_given?

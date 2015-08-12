@@ -1,6 +1,6 @@
 require_relative 'spec_helper.rb'
 
-describe 'API: requesting an array object'  do
+describe 'API: requesting an array object' do
 
   describe 'array relation' do
 
@@ -8,7 +8,7 @@ describe 'API: requesting an array object'  do
       JSON_ROA::Client.connect('/array')
     end
 
-    describe 'array_resource via get'  do
+    describe 'array_resource via get' do
 
       it do
         expect(array.get.data).to be == [{ 'x' => 42 }]
