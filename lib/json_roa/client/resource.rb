@@ -6,6 +6,7 @@ module JSON_ROA
 
     class Resource
 
+      attr_reader :conn
       attr_reader :response
 
       def initialize(conn, response = nil)

@@ -4,6 +4,9 @@ module JSON_ROA
     class Collection
       include Enumerable
 
+      attr_reader :conn
+      attr_reader :resource
+
       def initialize(conn, resource)
         @conn = conn
         @resource = resource

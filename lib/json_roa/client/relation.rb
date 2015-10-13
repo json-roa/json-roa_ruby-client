@@ -5,6 +5,7 @@ module JSON_ROA
   module Client
     class Relation
 
+      attr_reader :conn
       attr_reader :data
       attr_reader :key
 
