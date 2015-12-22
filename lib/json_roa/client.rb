@@ -22,7 +22,7 @@ module JSON_ROA
           elsif env.body.is_a? Hash
             env.json_roa_data = env.body.delete('_json-roa')
           end
-          json_roa_version = env.json_roa_data['json-roa_version']
+          json_roa_version = env.json_roa_data['version'] || env.json_roa_data['json-roa_version']
           major_version =
             begin
               Integer(/^(\d+).*/.match(json_roa_version)[1])
