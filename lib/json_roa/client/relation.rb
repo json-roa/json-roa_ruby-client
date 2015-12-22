@@ -36,6 +36,7 @@ module JSON_ROA
       end
 
       def run_request(method, query_parameters, body, headers, &block)
+        query_parameters = query_parameters.with_indifferent_access rescue query_parameters
         href = @data['href']
         template = ::Addressable::Template.new(href)
         assert_proper_query_parameters! query_parameters, template

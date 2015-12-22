@@ -25,11 +25,15 @@ module JSON_ROA
       end
 
       def data
-        @response.body
+        @response.body.instance_eval do
+          self.with_indifferent_access rescue self
+        end
       end
 
       def json_roa_data
-        @response.env.json_roa_data
+        @response.env.json_roa_data.instance_eval do
+          self.with_indifferent_access rescue self
+        end
       end
 
       def collection
