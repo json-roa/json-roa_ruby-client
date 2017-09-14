@@ -1,13 +1,13 @@
 state: 'done'
-_json-roa: 
+_json-roa:
   json-roa_version: 1.0.0
-  self_relation: 
+  self-relation:
     href: /tasks/t1
     methods:
       get: {}
       put: {}
       delete: {}
-  relations: 
+  relations:
     tasks:
       href: /tasks/
 

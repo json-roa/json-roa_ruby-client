@@ -21,7 +21,7 @@ module JSON_ROA
 
       def self_relation
         ::JSON_ROA::Client::Relation.new( \
-          @conn, 'self', json_roa_data['self_relation']) rescue nil
+          @conn, 'self', json_roa_data['self-relation']) rescue nil
       end
 
       def data
