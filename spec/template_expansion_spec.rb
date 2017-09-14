@@ -3,7 +3,7 @@ require_relative 'spec_helper.rb'
 describe 'template expansion' do
 
   let :root_relation do
-    JSON_ROA::Client.connect('/')
+    JSON_ROA::Client.connect('http://localhost/')
   end
 
   context 'task relation' do

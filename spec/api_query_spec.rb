@@ -5,7 +5,7 @@ describe 'API: traversing from root to resource to some relation' do
   describe 'root relation' do
 
     let :root_relation do
-      JSON_ROA::Client.connect('/')
+      JSON_ROA::Client.connect('http://localhost/')
     end
 
     describe 'root_resource via get' do

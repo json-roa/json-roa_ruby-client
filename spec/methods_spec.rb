@@ -3,7 +3,7 @@ require_relative 'spec_helper.rb'
 describe 'methods of the relation /tasks/t1' do
 
   let :root_relation do
-    JSON_ROA::Client.connect('/')
+    JSON_ROA::Client.connect('http://localhost/')
   end
 
   subject(:task1_self_relation) \

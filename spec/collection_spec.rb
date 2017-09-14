@@ -3,7 +3,7 @@ require_relative 'spec_helper.rb'
 describe JSON_ROA::Client::Collection do
 
   let :root_relation do
-    JSON_ROA::Client.connect('/')
+    JSON_ROA::Client.connect('http://localhost/')
   end
 
   describe 'tasks resource via get' do
